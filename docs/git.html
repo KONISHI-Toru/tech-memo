@@ -9,94 +9,92 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <title>git の使い方に関するメモ</title>
+    <style>
+     pre.terminal {
+       margin: 1em 1em 1em 1.6em;
+       padding: 8px;
+       background-color: #fafafa;
+       border: 1px solid #e2e2e2;
+       border-radius: 5px;
+       width: auto;
+       overflow-x: auto;
+       overflow-y: hidden;
+     }
+    </style>
   </head>
   <body>
     <div class="container">
-    <h1>git の使い方に関するメモ</h1>
-    <h3>リポジトリ作成手順</h3>
-    [power-station]
+      <h1>git の使い方に関するメモ</h1>
+      <h3>リポジトリ作成手順</h3>
+      [サーバ]
+      <pre class="terminal">
+$ mkdir {project_name}.git
+$ cd {project_name}
+$ git init --bare --shared</pre>
+
+      [端末]
+      <pre class="terminal">
+$ git clone ssh://{user_name}@{server_name}:{server_repository_path}/{project_name}.git {project_name}</pre>
+
+
+
+      <h3>リポジトリ作成手順(既に作業ディレクトリがある場合)</h3>
+      [サーバ]
+      <pre class="terminal">
+$ mkdir {project_name}.git
+$ cd {project_name}
+$ git init --bare --shared</pre>
+
+      [端末]
+      <pre class="terminal">
+$ git remote add origin ssh://{user_name}@{server_name}:{server_repository_path}/{project_name}.git
+$ git push -u origin main</pre>
+
+
+
+      <h3>ブランチ作成</h3>
+      [端末]
+      <pre class="terminal">
+$ git checkout -b {branch_name}
+$ git push --set-upstream origin {branch_name}</pre>
+
+
+
+
+      <h3>ユーザ指定でのclone（Github等）</h3>
+      <pre class="terminal">
+$ git clone https://{user_name}@github.com/{user_name}/{project_name}.git</pre>
+
+      <h3>リモートブランチを切り換える</h3>
+      <pre class="terminal">
+$ git checkout -b konishi origin/{branch_name}</pre>
+
+
+      <h3>別のリモートブランチにpushする。</h3>
+      <pre class="terminal">
+$ git push origin {local_branch_name}:{remote_branch_name}</pre>
+
+
+      <h3>commit し忘れたファイルの追加（push前のみ）</h3>
+      <pre class="terminal">
+$ git add {file_name}
+$ git commit --amend --no-edit</pre>
+
+
+      <h3>add の取り消し</h3>
+      <pre class="terminal">
+$ git restore --staged {file_name}</pre>
+
+
+      <h3>SSH公開鍵認証でのGitHubアクセス</h3>
     <pre class="terminal">
-    $ cd /Volumes/Projects/THN
-    $ mkdir {project-name}.git
-    $ cd {project-name}
-    $ git init --bare --shared
-    </pre>
-
-    [端末]
-    <pre class="terminal">
-    $ git clone ssh://toru@power-station.local:/Volumes/Projects/THN/{project-name}.git {project-name}
-    </pre>
-
-
-
-    <h3>リポジトリ作成手順(既に作業ディレクトリがある場合)</h3>
-    [power-station]
-    <pre class="terminal">
-    $ cd /Volumes/Projects/THN
-    $ mkdir {project-name}.git
-    $ cd {project-name}
-    $ git init --bare --shared
-    </pre>
-
-    [端末]
-    <pre class="terminal">
-    $ git remote add origin ssh://toru@power-station.local:/Volumes/Projects/THN/{project-name}.git
-    $ git push -u origin master
-    </pre>
-
-
-
-    <h3>ブランチ作成</h3>
-    [端末]
-    <pre class="terminal">
-    $ git checkout -b {branch_name}
-    $ git push --set-upstream origin {branch_name}
-    </pre>
-
-
-
-
-    <h3>ユーザ指定でのclone（Github等）</h3>
-    <pre class="terminal">
-    $ git clone https://KONISHI-Toru@github.com/kazu-kitagawa/GreenStudy.git
-    </pre>
-
-    <h3>リモートブランチを切り換える</h3>
-    <pre class="terminal">
-    $ git checkout -b konishi origin/konishi
-    </pre>
-
-
-    <h3>別のリモートブランチにpushする。</h3>
-    <pre class="terminal">
-    $ git push origin master:konishi/20200107
-    </pre>
-
-
-    <h3>commit し忘れたファイルの追加（push前のみ）</h3>
-    <pre class="terminal">
-    $ git add {file_name}
-    $ git commit --amend --no-edit
-    </pre>
-
-
-    <h3>add の取り消し</h3>
-    <pre class="terminal">
-    $ git reset HEAD {file_name}
-    </pre>
-
-
-    <h3>SSH公開鍵認証でのGitHubアクセス</h3>
-    <pre class="terminal">
-    $ git clone git@github.com:KONISHI-Toru/sample
-    </pre>
+$ git clone git@github.com:{user_name}/{project_name}</pre>
 
 
     <h3>CRLFファイルを扱う場合</h3>
     <pre class="terminal">
-    $ git config --local core.autocrlf false
-    $ git config --global core.whitespace cr-at-eol
-    </pre>
+$ git config --local core.autocrlf false
+$ git config --global core.whitespace cr-at-eol</pre>
     </div>
   </body>
 </html>
