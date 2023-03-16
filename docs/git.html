@@ -20,6 +20,12 @@
        overflow-x: auto;
        overflow-y: hidden;
      }
+     h3 {
+       margin-top: 2em;
+     }
+     h1 + h3 {
+       margin-top: 0em;
+     }
     </style>
   </head>
   <body>
@@ -82,8 +88,7 @@ $ git remote add origin git@github.com:{user_name}/{project_name}.git
 $ git branch -M main
 $ git push -u origin main
 $ git push origin --all
-$ git push origin --tags
-      </pre>
+$ git push origin --tags</pre>
 
 
       <h3>commit し忘れたファイルの追加（push前のみ）</h3>
