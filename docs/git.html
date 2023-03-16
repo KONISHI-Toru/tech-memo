@@ -75,6 +75,17 @@ $ git checkout -b konishi origin/{branch_name}</pre>
 $ git push origin {local_branch_name}:{remote_branch_name}</pre>
 
 
+      <h3>ローカルのリポジトリを Github に移行する。</h3>
+      <pre class="terminal">
+$ cd {local_bare_repository}
+$ git remote add origin git@github.com:{user_name}/{project_name}.git
+$ git branch -M main
+$ git push -u origin main
+$ git push origin --all
+$ git push origin --tags
+      </pre>
+
+
       <h3>commit し忘れたファイルの追加（push前のみ）</h3>
       <pre class="terminal">
 $ git add {file_name}
@@ -87,12 +98,12 @@ $ git restore --staged {file_name}</pre>
 
 
       <h3>SSH公開鍵認証でのGitHubアクセス</h3>
-    <pre class="terminal">
+      <pre class="terminal">
 $ git clone git@github.com:{user_name}/{project_name}</pre>
 
 
-    <h3>CRLFファイルを扱う場合</h3>
-    <pre class="terminal">
+      <h3>CRLFファイルを扱う場合</h3>
+      <pre class="terminal">
 $ git config --local core.autocrlf false
 $ git config --global core.whitespace cr-at-eol</pre>
     </div>
