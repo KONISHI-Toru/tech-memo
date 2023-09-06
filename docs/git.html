@@ -111,6 +111,10 @@ $ git clone git@github.com:{user_name}/{project_name}</pre>
       <pre class="terminal">
 $ git config --local core.autocrlf false
 $ git config --global core.whitespace cr-at-eol</pre>
+
+      <h3>ブランチの作成者、作成日時を調べる方法</h3>
+      <pre class="terminal">
+$ git for-each-ref --format='%(committerdate:iso) %(refname) [%(authorname)]' --sort=-committerdate refs/heads refs/remotes</pre>
     </div>
   </body>
 </html>
